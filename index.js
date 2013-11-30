@@ -58,6 +58,9 @@ module.exports = function* (req, options) {
   }
 
   function onFile(fieldname, file, filename, encoding, mimetype) {
+    // https://github.com/mscdex/busboy/issues/16
+    if (!filename)
+      return file.resume()
     // opinionated, but 5 arguments is ridiculous
     file.fieldname = fieldname
     file.filename = filename
