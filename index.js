@@ -47,7 +47,7 @@ module.exports = function* (req, options) {
     saveTo(part, part.path, ch.push())
   }
 
-  yield* ch.flush(true)
+  yield* ch.flush(false)
 
   return obj
 
