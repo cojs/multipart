@@ -14,7 +14,7 @@ describe('Co Multipart', function () {
         concurrency: 1
       })
 
-      assert.equal(parts.fields.length, 2)
+      assert.equal(parts.fields.length, 3)
       assert.equal(Object.keys(parts.field).length, 2)
       assert.equal(parts.files.length, 2)
       assert.equal(Object.keys(parts.file).length, 2)
@@ -46,6 +46,10 @@ describe('Co Multipart', function () {
       done()
     })
   })
+  
+  it('should not overwrite prototypes', function () {
+    assert.equal(parts.field.hasOwnProperty, Object.prototype.hasOwnProperty)
+  })
 })
 
 function request() {
@@ -66,6 +70,10 @@ function request() {
     'Content-Disposition: form-data; name="file_name_1"',
     '',
     'super beta file',
+    '-----------------------------paZqsnEHRufoShdX6fh0lUhXBP4k',
+    'Content-Disposition: form-data; name="hasOwnProperty"',
+    '',
+    'super bad file',
     '-----------------------------paZqsnEHRufoShdX6fh0lUhXBP4k',
     'Content-Disposition: form-data; name="upload_file_0"; filename="1k_a.dat"',
     'Content-Type: application/octet-stream',
