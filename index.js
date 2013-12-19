@@ -53,8 +53,9 @@ module.exports = function* (req, options) {
 
   function onField() {
     var args = slice.call(arguments)
-    obj.field[args[0]] = args[1]
     obj.fields.push(args)
+    if (Object.getOwnPropertyDescriptor(Object.prototype, args[0])) return
+    obj.field[args[0]] = args[1]
   }
 
   function onFile(fieldname, file, filename, encoding, mimetype) {
