@@ -32,7 +32,7 @@ module.exports = function* (req, options) {
   .on('field', onField)
   .on('file', onFile)
   .on('error', onEnd)
-  .on('end', onEnd)
+  .on('finish', onEnd)
 
   req.pipe(baby)
 
@@ -86,7 +86,7 @@ module.exports = function* (req, options) {
     baby.removeListener('field', onField)
     baby.removeListener('file', onFile)
     baby.removeListener('error', onEnd)
-    baby.removeListener('end', onEnd)
+    baby.removeListener('finish', onEnd)
   }
 }
 
