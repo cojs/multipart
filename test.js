@@ -8,8 +8,8 @@ var multipart = require('./')
 describe('Co Multipart', function () {
   var parts
 
-  it('should parse', function (done) {
-    co(function* () {
+  it('should parse', function () {
+    return co(function* () {
       parts = yield* multipart(request(), {
         concurrency: 1
       })
@@ -18,7 +18,7 @@ describe('Co Multipart', function () {
       assert.equal(Object.keys(parts.field).length, 2)
       assert.equal(parts.files.length, 2)
       assert.equal(Object.keys(parts.file).length, 2)
-    })(done)
+    })
   })
 
   it('should save files', function () {
@@ -46,7 +46,7 @@ describe('Co Multipart', function () {
       done()
     })
   })
-  
+
   it('should not overwrite prototypes', function () {
     assert.equal(parts.field.hasOwnProperty, Object.prototype.hasOwnProperty)
   })
