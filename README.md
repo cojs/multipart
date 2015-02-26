@@ -31,6 +31,7 @@ app.use(function* (next) {
 `options`, other than those passed to [busboy](https://github.com/mscdex/busboy#busboy-methods), are:
 
 - `concurrency: 2` - Maximum number of open file descriptors.
+- `tmp: os.tmpdir()` - File store tmp dir, default is the operating system's temp directory.
 
 ### parts.field, parts.fields
 

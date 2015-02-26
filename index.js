@@ -7,7 +7,6 @@ var rimraf = require('rimraf')
 var saveTo = require('save-to')
 
 var slice = [].slice
-var tmp = os.tmpdir()
 
 module.exports = function* (req, options) {
   // KOA MAGIC SAUCE
@@ -18,6 +17,7 @@ module.exports = function* (req, options) {
 
   var ch = archan(options)
 
+  var tmp = options.tmp || os.tmpdir()
   var folder = path.join(tmp, uid())
   // lets pray there are no issues here
   yield fs.mkdir.bind(null, folder)

@@ -1,7 +1,9 @@
 var co = require('co')
 var fs = require('fs')
+var path = require('path')
 var Stream = require('stream')
 var assert = require('assert')
+var rimraf = require('rimraf')
 
 var multipart = require('./')
 
@@ -49,6 +51,28 @@ describe('Co Multipart', function () {
 
   it('should not overwrite prototypes', function () {
     assert.equal(parts.field.hasOwnProperty, Object.prototype.hasOwnProperty)
+  })
+
+  it('should custom tmp dir', function () {
+    var tmpdir = path.join(__dirname, '.tmp')
+    if (!fs.existsSync(tmpdir)) {
+      fs.mkdirSync(tmpdir)
+    }
+    return co(function* () {
+      var parts = yield* multipart(request(), {
+        tmp: tmpdir
+      })
+
+      assert.equal(parts.fields.length, 3)
+      assert.equal(Object.keys(parts.field).length, 2)
+      assert.equal(parts.files.length, 2)
+      assert.equal(Object.keys(parts.file).length, 2)
+      parts.files.forEach(function (file) {
+        assert.equal(file.path.indexOf(tmpdir), 0)
+      })
+
+      rimraf.sync(tmpdir)
+    })
   })
 })
 
