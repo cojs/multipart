@@ -43,6 +43,8 @@ module.exports = function* (req, options) {
       continue
     yield* ch.drain()
     // it's a stream now
+    if (!part.filename) 
+      part.filename = uid()
     part.path = path.join(folder, part.filename)
     saveTo(part, part.path, ch.push())
   }
