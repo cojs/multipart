@@ -18,8 +18,8 @@ describe('Co Multipart', function () {
 
       assert.equal(parts.fields.length, 3)
       assert.equal(Object.keys(parts.field).length, 2)
-      assert.equal(parts.files.length, 2)
-      assert.equal(Object.keys(parts.file).length, 2)
+      assert.equal(parts.files.length, 3)
+      assert.equal(Object.keys(parts.file).length, 3)
     })
   })
 
@@ -65,8 +65,8 @@ describe('Co Multipart', function () {
 
       assert.equal(parts.fields.length, 3)
       assert.equal(Object.keys(parts.field).length, 2)
-      assert.equal(parts.files.length, 2)
-      assert.equal(Object.keys(parts.file).length, 2)
+      assert.equal(parts.files.length, 3)
+      assert.equal(Object.keys(parts.file).length, 3)
       parts.files.forEach(function (file) {
         assert.equal(file.path.indexOf(tmpdir), 0)
       })
@@ -108,7 +108,11 @@ function request() {
     'Content-Type: application/octet-stream',
     '',
     'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB',
-   '-----------------------------paZqsnEHRufoShdX6fh0lUhXBP4k--'
+    '-----------------------------paZqsnEHRufoShdX6fh0lUhXBP4k',
+    'Content-Disposition: form-data; name="image"; filename=""',
+    '',
+    'empty filename',
+    '-----------------------------paZqsnEHRufoShdX6fh0lUhXBP4k--',
   ].join('\r\n'))
 
   return stream
