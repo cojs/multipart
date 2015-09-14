@@ -18,10 +18,10 @@
     "url": "https://github.com/cojs/multipart/issues"
   },
   "dependencies": {
-    "archan": "^0.4.1",
-    "busboy": "^0.2.9",
-    "rimraf": "^2.2.8",
-    "save-to": "^1.0.3"
+    "co-busboy": "1",
+    "fs-cp": "1",
+    "mz": "2",
+    "rimraf": "2"
   },
   "devDependencies": {
     "co": "*",
