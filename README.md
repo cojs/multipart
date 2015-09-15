@@ -1,5 +1,22 @@
 # co multipart
 
+[![NPM version][npm-image]][npm-url]
+[![build status][travis-image]][travis-url]
+[![Test coverage][codecov-image]][codecov-url]
+[![David deps][david-image]][david-url]
+[![npm download][download-image]][download-url]
+
+[npm-image]: https://img.shields.io/npm/v/co-multipart.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/co-multipart
+[travis-image]: https://img.shields.io/travis/cojs/multipart.svg?style=flat-square
+[travis-url]: https://travis-ci.org/cojs/multipart
+[codecov-image]: https://codecov.io/github/cojs/multipart/coverage.svg?branch=master
+[codecov-url]: https://codecov.io/github/cojs/multipart?branch=master
+[david-image]: https://img.shields.io/david/cojs/multipart.svg?style=flat-square
+[david-url]: https://david-dm.org/cojs/multipart
+[download-image]: https://img.shields.io/npm/dm/co-multipart.svg?style=flat-square
+[download-url]: https://npmjs.org/package/co-multipart
+
 A [co-busboy](https://github.com/cojs/busboy)-based multipart parser using `co` or `koa` that saves files to disk.
 Use this instead of **co-busboy** if you want to just download the files to disk and don't care about validating the fields before the downloading the files (i.e. validating the CSRF token).
 

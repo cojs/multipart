@@ -36,6 +36,7 @@ Thumbs.db
 # Node.js #
 ###########
 lib-cov
+coverage
 *.seed
 *.log
 *.csv

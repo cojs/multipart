@@ -25,10 +25,15 @@
   },
   "devDependencies": {
     "co": "*",
+    "istanbul": "0",
     "mocha": "*",
     "should": "*"
   },
   "scripts": {
-    "test": "make test"
-  }
+    "test": "mocha --harmony -R spec -r should test/*.test.js",
+    "test-cov": "istanbul --harmony cover node_modules/.bin/_mocha -- -r should test/*.test.js"
+  },
+  "files": [
+    "index.js"
+  ]
 }

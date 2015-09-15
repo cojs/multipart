@@ -5,7 +5,7 @@ var Stream = require('stream')
 var assert = require('assert')
 var rimraf = require('rimraf')
 
-var multipart = require('./')
+var multipart = require('../')
 
 describe('Co Multipart', function () {
   var parts
