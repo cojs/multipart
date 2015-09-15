@@ -12,9 +12,7 @@ describe('Co Multipart', function () {
 
   it('should parse', function () {
     return co(function* () {
-      parts = yield* multipart(request(), {
-        concurrency: 1
-      })
+      parts = yield* multipart(request())
 
       assert.equal(parts.fields.length, 3)
       assert.equal(Object.keys(parts.field).length, 2)

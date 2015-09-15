@@ -1,11 +1,10 @@
 # co multipart
 
-A [busboy](http://github.com/mscdex/busboy)-based multipart parser using `co` or `koa` that saves files to disk.
-Use this instead of [co-busboy](https://github.com/cojs/busboy) if you want to just download the files to disk and don't care about validating the fields before the downloading the files (i.e. validating the CSRF token).
+A [co-busboy](https://github.com/cojs/busboy)-based multipart parser using `co` or `koa` that saves files to disk.
+Use this instead of **co-busboy** if you want to just download the files to disk and don't care about validating the fields before the downloading the files (i.e. validating the CSRF token).
 
 - Open file descriptor limit - throttle the request so you don't use too many file descriptors!
-- Easy disposal - automatically deletes all the files if the request is aborted (i.e. closed before finished parsing).
-  Returns a `.dispose()` method to easily delete all the files yourself whenever you like.
+- Easy disposal - Returns a `.dispose()` method to easily delete all the files yourself whenever you like.
 
 ## API
 
@@ -28,9 +27,8 @@ app.use(function* (next) {
 ### var parts = yield* multipart(request, [options])
 
 `request` can be a raw node HTTP `req` or a Koa context.
-`options`, other than those passed to [busboy](https://github.com/mscdex/busboy#busboy-methods), are:
+`options`, other than those passed to [co-busboy](https://github.com/cojs/busboy), are:
 
-- `concurrency: 2` - Maximum number of open file descriptors.
 - `tmp: os.tmpdir()` - File store tmp dir, default is the operating system's temp directory.
 
 ### parts.field, parts.fields
